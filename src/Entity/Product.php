@@ -43,6 +43,9 @@ class Product
     #[ORM\OneToMany(targetEntity: AddProductHistory::class, mappedBy: 'product')]
     private Collection $addProductHistories;
 
+    #[ORM\Column(length: 255)]
+    private ?string $size = null;
+
     public function __construct()
     {
         $this->subCategory = new ArrayCollection();
@@ -164,6 +167,18 @@ class Product
                 $addProductHistory->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->size;
+    }
+
+    public function setSize(string $size): static
+    {
+        $this->size = $size;
 
         return $this;
     }

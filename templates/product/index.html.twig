@@ -16,6 +16,7 @@
                     <th>Description</th>
                     <th>Prix (en euros)</th>
                     <th>Stock disponible</th>
+                    <th>taille</th>
                     <th>actions</th>
                 </tr>
             </thead>
@@ -33,6 +34,8 @@
                             <p class="text text-danger">Stock épuisé</p>
                         {% endif %}
                     </td>
+                    <td>{{ product.size }}</td>
+                    
 
                     <td>
                         <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-outline-primary">show</a> |
