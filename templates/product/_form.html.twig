@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form.name,{'attr':{'class':'form form-control','placeholder':'Nom du produit'}}) }}<br>
+    {{ form_widget(form.price,{'attr':{'class':'form form-control','placeholder':'Prix'}}) }}<br>
+    {{ form_widget(form.description,{'attr':{'class':'form form-control','placeholder':'Description'}}) }}<br>
+    {{ form_widget(form.subCategory,{'attr':{'class':'form form-control','placeholder':'Sous-Catégorie'}}) }}<br>
+    <button class="btn btn-outline-primary btn-block">{{ button_label|default('Ajouter') }}</button><br>
+{{ form_end(form) }}
