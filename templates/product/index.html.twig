@@ -15,6 +15,7 @@
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Prix (en euros)</th>
+                    <th>Stock disponible</th>
                     <th>actions</th>
                 </tr>
             </thead>
@@ -23,11 +24,20 @@
                 <tr>
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
+                    <td>{{ product.description|slice(0,50) }} ...</td>
                     <td>{{ product.price }}</td>
                     <td>
+                        {% if product.stock > 0 %}
+                            {{ product.stock }}
+                            {% else %}
+                            <p class="text text-danger">Stock épuisé</p>
+                        {% endif %}
+                    </td>
+
+                    <td>
                         <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-outline-primary">show</a> |
-                        <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-outline-primary">edit</a> 
+                        <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-outline-success">edit</a> |
+                        <a href="{{ path('app_product_stock_add', {'id': product.id}) }}" class="btn btn-outline-info">Ajouter du stock</a> 
 
 
                     </td>
@@ -40,6 +50,6 @@
             </tbody>
         </table>
 
-        <a href="{{ path('app_product_new') }}" class="btn btn-outline-primary">Ajouter un produit</a>
+        <a href="{{ path('app_product_new') }}" class="btn btn-outline-success">Ajouter un produit</a>
     </div>
 {% endblock %}
