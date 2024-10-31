@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stubborn{% endblock %}
+
+{% block body %}
+
+
+<div class="container"><br><br>
+    <h3>Filtrer</h3>
+    <a href="{{ path('app_shop') }}" class="btn btn-outline-info">Voir tout</a>
+    <a href="{{ path('app_shop_2') }}" class="btn btn-outline-success">29 à 35€</a>
+    <a href="{{ path('app_shop_3') }}" class="btn btn-outline-success">35 à 50€</a>
+
+    <div class="row">
+    
+        
+    
+    {% for product in products %}
+        {% if product.price >= 10 and product.price <= 29 %}
+            <div class="col-md-3 mt-4">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('uploads/images/'~product.image)}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.price }} euros</p>
+                        <a href="{{ path('app_show_product',{'id':product.id}) }}" class="btn btn-outline-success btn-block">Voir le Produit</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+            
+    {% endfor %}
+    
+    </div>
+
+</div>
+{% endblock %}

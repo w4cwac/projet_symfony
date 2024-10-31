@@ -13,10 +13,15 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body class="body">
         {% block nav %}
             {% include 'layout/nav.html.twig' %}
         {% endblock %}
-        {% block body %}{% endblock %}
+        {% block body %}{% endblock %}<br>
+        {% block footer %}
+            {% include 'layout/footer.html.twig' %}
+        {% endblock %}
     </body>
+    <footer>
+    </footer>
 </html>
