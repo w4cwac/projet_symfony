@@ -16,8 +16,9 @@
                 <img src="{{ asset('uploads/images/'~product.image)}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.price }} euros</p>
-                    <a href="{{ path('app_show_product',{'id':product.id}) }}" class="btn btn-outline-success btn-block">Voir le Produit</a>
+                    <p class="card-text">{{ product.price }} €</p>
+                    <a href="{{ path('app_show_product',{'id':product.id}) }}" class="btn btn-outline-success ">Voir le Produit</a> 
+                    <a href="{{ path('app_cart_new',{'id':product.id}) }}" class="btn btn-outline-success mt-2 ">Ajouter au panier</a>
                 </div>
             </div>
         </div>
