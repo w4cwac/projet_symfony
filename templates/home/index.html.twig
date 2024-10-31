@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Stubborn{% endblock %}
 
 {% block body %}
 
@@ -10,14 +10,14 @@
     <div class="row">
 
     {% for product in products %}
-        <div class="col-md-3">
+        <div class="col-md-3 mt-4">
 
             <div class="card" style="width: 18rem;">
                 <img src="{{ asset('uploads/images/'~product.image)}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.price }} euros</p>
-                    <a href="#" class="btn btn-outline-success">Ajouter au panier </a>
+                    <a href="{{ path('app_show_product',{'id':product.id}) }}" class="btn btn-outline-success btn-block">Voir le Produit</a>
                 </div>
             </div>
         </div>

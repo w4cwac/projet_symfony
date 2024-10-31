@@ -5,12 +5,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+      <ul class="nav navbar-nav w-100 justify-content-end" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ path('app_home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="{{ path('app_shop')}}">shop</a>
         </li>
         {% if is_granted("ROLE_ADMIN")  %}
             
@@ -28,15 +28,19 @@
           </ul>
         </li>
         {% endif %}
-       
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Link</a>
-        </li>
+        {% if is_granted("ROLE_USER")  %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_logout')}}">Se Déconnecter</a>
+          </li>
+          {% else %}
+          <li class="nav-item btn btn-outline-primary btn-sm ms-3">
+              <a class="nav-link" href="{{ path('app_login')}}" >Se Connecter </a>
+          </li>
+          <li class="nav-item btn btn-outline-info btn-sm ms-3">
+            <a class="nav-link" href="{{ path('app_register')}}">S'inscrire</a>
+          </li>
+        {% endif %}
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
