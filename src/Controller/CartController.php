@@ -18,7 +18,7 @@ class CartController extends AbstractController
     {
         $data = $cart->getcart($session, $productRepository);
         //dd($total);
-
+        
         return $this->render('cart/index.html.twig', [
             'items'=>$data['cart'],
             'total'=>$data['total']

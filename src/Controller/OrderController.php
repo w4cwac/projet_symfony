@@ -9,6 +9,7 @@ use App\Form\OrderType;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
 use App\Service\Cart;
+use App\Service\StripePayment;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManager;
@@ -27,6 +28,7 @@ class OrderController extends AbstractController
         ProductRepository $productRepository,
         EntityManagerInterface $entityManagerInterface,
         Cart $cart,
+        StripePayment $stripePayment,
     ): Response
     {
         $data = $cart->getcart($session, $productRepository);
@@ -56,21 +58,42 @@ class OrderController extends AbstractController
                         $entityManagerInterface->flush();
 
                     }
+
+                    $this->addFlash(
+                        'success',
+                        'Votre commande a été transmise'
+                    );
+    
+                    return $this->redirectToRoute('app_home');
+                }else{
+                    $this->addFlash(
+                        'danger',
+                        'Votre panier ne comporte aucun article'
+                    );
+    
+                    return $this->redirectToRoute('app_home');
                 }
 
                 $session->set('cart',[]);
-                $this->addFlash(
-                    'success',
-                    'Votre commande a été transmise'
-                );
-
-                return $this->redirectToRoute('app_home');
+                
 
                 
 
 
 
             }
+
+            $payment = new StripePayment();
+
+            $shippingCost = $order->getCity()->getShippingCost();
+
+            $payment->startPayment($data, $shippingCost);
+
+            $stripeRedirectUrl = $payment->getStripeRedirectUrl();
+
+
+            return $this->redirect($stripeRedirectUrl);
+
             
             
         }
