@@ -1,6 +1,6 @@
-Après avoir cloné le projet avec git clone https://github.com/DimitriKft/myp_symfony.git
+Après avoir cloné le projet avec git clone https://github.com/w4cwac/projet_symfony
 
-Exécutez la commande cd myp_symfony pour vous rendre dans le dossier depuis le terminal.
+Exécutez la commande cd projet_symfony pour vous rendre dans le dossier depuis le terminal.
 
 Ensuite, dans l'ordre taper les commandes dans votre terminal :
 
