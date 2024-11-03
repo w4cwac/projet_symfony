@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Mon Panier{% endblock %}
 
 {% block body %}
     <div class="container"><br><br>
@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.product.price }}</td>
-                    <td>{{ item.quantity }}</td>
+                    <td><a href="{{ path('app_cart_product_remove_one',{'id':item.product.id}) }}" class="btn btn-primary me-4">-</a>{{ item.quantity }}<a href="{{ path('app_cart_new',{'id':item.product.id}) }}" class="btn btn-primary ms-4">+</a></td>
                     <td>{{ item.product.price * item.quantity }}</td>
                     <td><a href="{{ path('app_cart_product_remove',{'id':item.product.id}) }}" class="text-danger text-decoration-none">Supprimer du panier</a></td>
                 
@@ -33,7 +33,7 @@
             <br><br>
             <h2>Total: {{ total }}€</h2>
             <div class="row">
-                <a href="" class="btn btn-primary col-2 m-lg-2">Valider la commande</a>
+                <a data-turbo="false" href="{{ path('app_order') }}" class="btn btn-primary col-2 m-lg-2">Valider la commande</a>
                 <a onclick="return confirm('voulez-vous supprimer tout votre panier ?')" href="{{ path('app_cart_remove') }}" class="btn btn-outline-danger col-2 m-lg-2">Supprimer le panier</a>
             </div>
         {% endif %}

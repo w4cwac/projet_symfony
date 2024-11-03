@@ -30,3 +30,7 @@ footer {
 	display : table-row;
 	width: 100%; /* à titre d'exemple */
 }
+
+h1{
+    margin-top: 60px;
+}

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" href="#">Stubborn</a>
+    <img src="../assets/Logo/Logo.png" class="" alt="Logo Stubborn">
+    <p class="text text-secondary ms-4 mt-5">Don't compromise on your look</p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,9 +24,13 @@
             Admin
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ path('app_orders_show')}}">Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ path('app_category')}}">Catégories</a></li>
             <li><a class="dropdown-item" href="{{ path('app_sub_category_index')}}">Sous-Catégories</a></li>
             <li><a class="dropdown-item" href="{{ path('app_product_index')}}">Produits</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ path('app_city_index')}}">Frais de port</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ path('app_user')}}">Utilisateur</a></li>
           </ul>

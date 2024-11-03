@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}City index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>City index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom de la ville</th>
+                    <th>Frais de port</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for city in cities %}
+                <tr>
+                    <td>{{ city.id }}</td>
+                    <td>{{ city.name }}</td>
+                    <td>{{ city.shippingCost }}</td>
+                    <td>
+                        <a href="{{ path('app_city_show', {'id': city.id}) }}" class="btn btn-secondary">show</a>
+                        <a href="{{ path('app_city_edit', {'id': city.id}) }}" class="btn btn-outline-info">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune ville enregistré</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_city_new') }}" class="btn btn-primary">Ajouter une ville</a>
+    </div>
+{% endblock %}
