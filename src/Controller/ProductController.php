@@ -54,12 +54,7 @@ final class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            $stockHistory = new AddProductHistory();
-            $stockHistory->setQte($product->getStock());
-            $stockHistory->setProduct($product);
-            $stockHistory->setCreatedAt(new \DateTimeImmutable());
-            $entityManager->persist($stockHistory);
-            $entityManager->flush();
+            
 
             $this->addFlash(
                'success',
