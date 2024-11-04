@@ -37,13 +37,7 @@ class ProductType extends AbstractType
                         'mimeTypesMessage' => "votre image de couverture doir être au format valide(png,jpg ou jpeg)"
                     ])
                 ]
-            ])
-            ->add('subCategory', EntityType::class, [
-                'class' => SubCategory::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
